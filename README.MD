@@ -34,7 +34,7 @@ npm run build
 
 ### 扩展的一些功能
 所有扩展的功能统一在 `lib` 目录中管理。
-- `wxios`：使用`axios`的风格进行异步请求，具体见模块中的 `readme.md`。
+- `wxios`：使用`axios`的风格进行异步请求，具体见模块中的 `readme.md`。
 - `observer`: 类vue的方式更新数据，从而不必使用`setData`。
 - `wxp`：对`wx`对象的二次封装，具体见模块中的说明。
 - `es6-promise`: 主要是添加 `finally()` 的支持。
