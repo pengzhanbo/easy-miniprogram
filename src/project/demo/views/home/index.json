@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText" : "demo",
+  "usingComponents": {
+    "hello-word": "/project/demo/components/helloword/index"
+  }
+}

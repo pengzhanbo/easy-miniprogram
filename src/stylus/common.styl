@@ -1,0 +1,31 @@
+.ellipsis {
+    text-overflow ellipsis
+    overflow hidden
+    white-space nowrap
+}
+.flex-layout {
+  display flex
+  align-items center
+  justify-content space-between
+  /*兼容部分浏览器 START*/
+  display -webkit-box
+  display -webkit-flex
+  -webkit-align-items center
+  -webkit-justify-content space-between
+}
+.text-fill {
+  line-height 0
+  text-align justify
+  -webkit-text-align-last justify
+}
+.scrollbar::-webkit-scrollbar{
+    -webkit-appearance none
+    width 0
+    height 0
+    opacity 0
+    color transparent
+}
+.scrollbar::-webkit-scrollbar-thumb{
+    opacity 0
+    color transparent
+}

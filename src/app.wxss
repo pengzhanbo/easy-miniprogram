@@ -1,0 +1,23 @@
+/* 修复组件 hidden 属性 权重过低导致 hidden设置不一定有效的bug */
+view[hidden],
+text[hidden],
+scroll-view[hidden],
+movable-view[hidden],
+cover-view[hidden],
+rich-text[hidden],
+button[hidden],
+checkbox[hidden],
+form[hidden],
+input[hidden],
+label[hidden],
+picker[hidden],
+picker-view[hidden],
+radio[hidden],
+slider[hidden],
+switch[hidden],
+textarea[hidden],
+navigator[hidden],
+image[hidden]
+{
+    display: none !important;
+}

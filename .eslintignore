@@ -1,0 +1,6 @@
+build/
+config/*.js
+flow/*.js
+src/common/sdk
+dist/
+src/**/*.wxml

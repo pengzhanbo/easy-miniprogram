@@ -1,0 +1,15 @@
+{
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "easy miniProgram"
+    },
+    "pages": [],
+    "networkTimeout": {
+        "request": 15000,
+        "connectSocket": 15000,
+        "uploadFile": 15000,
+        "downloadFile": 15000
+    }
+}
