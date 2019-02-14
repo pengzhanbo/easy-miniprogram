@@ -1,10 +1,14 @@
 /* 修复组件 hidden 属性 权重过低导致 hidden设置不一定有效的bug */
 view[hidden],
 text[hidden],
+icon[hidden],
 scroll-view[hidden],
 movable-view[hidden],
+movable-area[hidden],
 cover-view[hidden],
+cover-image[hidden],
 rich-text[hidden],
+progress[hidden],
 button[hidden],
 checkbox[hidden],
 form[hidden],
@@ -17,7 +21,13 @@ slider[hidden],
 switch[hidden],
 textarea[hidden],
 navigator[hidden],
-image[hidden]
+functional-page-navagator[hidden],
+image[hidden],
+audio[hidden],
+video[hidden],
+canvas[hidden],
+open-data[hidden],
+official-acount[hidden]
 {
     display: none !important;
 }

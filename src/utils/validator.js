@@ -1,9 +1,4 @@
 /**
- * @module validator
- * @author zhanpeng.lian
- */
-
-/**
  * @method hasOwn  判断一个属性是定义在对象本身而不是继承自原型链
  * @param {Object} obj 对象
  * @param {String} key 键

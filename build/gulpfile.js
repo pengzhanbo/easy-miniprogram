@@ -10,9 +10,11 @@ import {
     wxs,
     transfer,
     server,
-    mergerJson,
+    appJson,
     mergerConfig
 } from './task';
+import del from 'del';
+import config from '../config';
 
 let spinner = ora(`building for ${process.env.CHANNEL_NAME}-${process.env.NODE_ENV} package... \n`);
 let buildTime = 0;
@@ -28,7 +30,7 @@ gulp.task('dev',
     gulp.series(
         devLog,
         mergerConfig,
-        gulp.parallel(wxml, wxs, css, gulp.series(eslint, js), mergerJson, transfer),
+        gulp.parallel(wxml, wxs, css, gulp.series(eslint, js), appJson, transfer),
         server,
         watch
     )
@@ -37,9 +39,9 @@ gulp.task('dev',
 gulp.task('build',
     gulp.series(
         oraLog,
-        mergerConfig,
         clean,
-        gulp.parallel(wxml, wxs, css, gulp.series(eslint, js), mergerJson, transfer),
+        mergerConfig,
+        gulp.parallel(wxml, wxs, css, gulp.series(eslint, js), appJson, transfer),
         cb => {
             spinner.stop();
             buildTime = (Date.now() - buildTime) / 1000;
@@ -70,7 +72,7 @@ function watch(cb) {
         gulp.watch(['src/**/*.{wxss,styl,stylus}', '!src/stylus/**/*.{styl, stylus}', '!src/app.wxss'], css),
         gulp.watch('src/**/*.js', gulp.parallel(eslint, js)),
         gulp.watch(['src/**/*.json', 'src/app.wxss'], transfer),
-        gulp.watch(['src/app.json', 'src/project/*/pages.json'], mergerJson)
+        gulp.watch(['src/app.json', 'src/project/**/views/**/*.wxml'], appJson)
     ].forEach(watcher => {
         watcher.on('change', watcherChange);
         watcher.on('add', watcherAdd);
@@ -82,15 +84,13 @@ function watch(cb) {
 
 function watcherChange(path, stats) {
     logger.log('changed', 'File:', path);
-    // console.log(logger.colors.yellow(`File: ${path} was changed`));
 }
 
 function watcherUnlink(path, stats) {
-    // console.log(logger.colors.red(`File: ${path} was remove`));
     logger.log('removed', 'File:', path);
+    del(path.replace('src', config.output));
 }
 
 function watcherAdd(path, stats) {
-    // console.log(logger.colors.green(`File: ${path} was add`));
     logger.log('added', 'File:', path);
 }

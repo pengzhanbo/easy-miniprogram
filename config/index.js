@@ -1,5 +1,8 @@
 var getIpAddress = require('../build/utils/getIPAddress');
 var merge = require('../build/utils/merge');
+var subPackageConfig = require('./subPackage');
+
+var PORT = 8083;
 
 var common = {
     output: 'dist',
@@ -10,29 +13,31 @@ var common = {
         delimiters: ['<%', '%>'],
         variable: {
             appid: 'wx4e5614dba2dc7974',
+            projectname: 'easy miniprogram'
         }
     },
     // 路径替换
     cdnOption: {
         regExp: '/static/.*?\\.(png|jpe?g|webp|gif|ico)',
         content: '/static'
-    }
+    },
+    // 分包配置
+    subPackage: subPackageConfig
 }
 
 var config = {
     // 开发环境配置
     dev: merge(common, {
-        port: 8083,
+        port: PORT,
          // 变量注入
          variableReject: {
             variable: {
-                env: 'dev',
-                projectname: 'easy miniprogram'
+                env: 'dev'
             }
         },
         // 路径替换
         cdnOption: {
-            replace: 'http://' + getIpAddress() + ':8083/static',
+            replace: 'http://' + getIpAddress() + ':' + PORT + '/static',
             version: false
         }
     }),
@@ -42,13 +47,12 @@ var config = {
         // 变量注入
         variableReject: {
             variable: {
-                env: 'test',
-                projectname: 'easy miniprogram'
+                env: 'test'
             }
         },
         // 路径替换
         cdnOption: {
-            replace: 'http://' + getIpAddress() + ':8083/static',
+            replace: 'http://' + getIpAddress() + ':' + PORT + '/static',
             version: true
         }
     }),
@@ -58,13 +62,12 @@ var config = {
         // 变量注入
         variableReject: {
             variable: {
-                env: 'production',
-                projectname: 'easy miniprogram'
+                env: 'production'
             }
         },
         // 路径替换
         cdnOption: {
-            replace: 'http://' + getIpAddress() + ':8083/static',
+            replace: 'http://' + getIpAddress() + ':' + PORT + '/static',
             version: true
         }
     })
