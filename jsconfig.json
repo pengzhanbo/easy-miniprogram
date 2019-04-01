@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "es6",
+        "paths": {
+            "common/*": ["./src/common/*"],
+            "components/*": ["./src/components/*"],
+            "services/*": ["./src/services/*"],
+            "stylus/*": ["./src/stylus/*"],
+            "lib/*": ["./src/lib/*"],
+            "@@/*": ["./src/utils/*"],
+            "utils/*": ["./src/utils/*"],
+            "project/*": ["./src/project*"]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "build",
+        "config",
+        "static"
+    ]
+}
