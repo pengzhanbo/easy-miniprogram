@@ -13,7 +13,7 @@
     "type": "git",
     "url": "https://github.com/volodymyr-lian/easy-miniprogram.git"
   },
-  "author": "zhanpeng.lian",
+  "author": "pengzhanbo",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^7.1.6",

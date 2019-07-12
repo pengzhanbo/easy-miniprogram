@@ -8,6 +8,7 @@
  *         该方法会检测调用的方法是否存在于wx上，且是否在当前版本库中可调用，是则调用wxp.request 方法
  *         否则抛出 Promise.reject({status: -200, message: 'request is not Found'});
  *         建议使用此方式调用。
+ * @author pengzhanbo
  */
 import {isFunction, hasOwn, isEmpty, isObject} from '@@/validator';
 let _wx;
@@ -94,7 +95,7 @@ function wxp(handleName, option) {
     if (!handleName) {
         throw new Error('wxp need handleName');
     }
-    // canIUse 可以判断在当前基础库版本中是否可以使用某个API
+    // canIUse可以判断在当前基础库版本中是否可以使用某个API
     let canIUse = _wx.canIUse || noop;
     let has = hasOwn(_wx, handleName);
     // 某些api在低版本的基础库中并没有实现，在调用前做一次判断，减少调用报错的问题。
