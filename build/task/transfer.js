@@ -6,7 +6,7 @@ import logger from '../utils/logger';
 
 export const transfer = cb => {
     let start = new Date();
-    return gulp.src(['src/**/*.json', 'src/app.wxss', '!src/**/pages.json'], {
+    return gulp.src(['src/**/*.json', 'src/app.wxss', '!src/**/pages.json', '!src/project.config.json'], {
         since: gulp.lastRun(transfer)
     })
         .pipe(plumber())

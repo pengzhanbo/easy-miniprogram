@@ -15,15 +15,10 @@ export const appJson = cb => {
         .pipe(parseAppJson({
             edit: json => {
                 let pages = json.pages;
-                // 将 home元素提前到首位
-                // 该需求后期改为通过设置权重的方式
-                // 临时方案
                 if (!pages) {
                     return json;
                 }
                 json = Object.assign(json, getSubPackage(pages, config.subPackage));
-                // 兼容旧版本中扫码页面
-                json.pages.push('pages/hotelOrder_scan/hotelOrder');
                 return json;
             }
         }))

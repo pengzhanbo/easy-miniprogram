@@ -4,7 +4,7 @@ export * from './eslint';
 export * from './js';
 export * from './transfer';
 export * from './appJson';
-export * from './mergerConfig';
+export * from './mergeConfig';
 export * from './wxml';
 export * from './wxs';
 export * from './server';

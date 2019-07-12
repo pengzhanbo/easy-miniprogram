@@ -10,5 +10,6 @@ module.exports = {
     'lib': _join('lib'),
     '@@': _join('utils'),
     'utils': _join('utils'),
-    'project': _join('project')
+    'project': _join('project'),
+    'filters': _join('filters')
 };

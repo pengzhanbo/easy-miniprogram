@@ -1,6 +1,7 @@
-import gUtil from 'gulp-util';
+var PluginError = require('plugin-error');
 import through from 'through';
 import path from 'path';
+import Vinyl from 'vinyl';
 
 const PLUGIN_NAME = 'gulp-miniProgram-appJson';
 
@@ -23,7 +24,7 @@ export default function parseAppJson(option) {
         }
 
         if (file.isStream()) {
-            return this.emit('error', new gUtil.PluginError(PLUGIN_NAME, `${PLUGIN_NAME}: Streaming not supported!`));
+            return this.emit('error', new PluginError(PLUGIN_NAME, `${PLUGIN_NAME}: Streaming not supported!`));
         }
         let projectConfigPattern = new RegExp(option.appJson + '$');
         if (projectConfigPattern.test(file.path)) {
@@ -43,7 +44,7 @@ export default function parseAppJson(option) {
             appContent = option.edit(appContent) || appContent;
         }
         let contents = JSON.stringify(appContent, null, '\t');
-        let output = new gUtil.File({
+        let output = new Vinyl({
             cwd: appFile.cwd,
             base: appFile.base,
             path: path.join(appFile.base, option.appJson),
@@ -61,7 +62,7 @@ function addPageList(pageList, page, option) {
         return [];
     }
     page = path.relative(path.join(process.cwd(), option.rootPath), page)
-        // .replace(new RegExp(path.posix, 'g'), '/')
+        .replace(new RegExp('\\' + path.sep, 'g'), '/')
         .replace(/\.wxml$/, '');
     let pattern = /\/(.*)\/(\1|index)$/;
     if (pattern.test(page) && pageList.indexOf(page) === -1){

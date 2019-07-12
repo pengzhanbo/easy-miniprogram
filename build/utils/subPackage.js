@@ -104,7 +104,7 @@ function setSubPackage(pages, rules, publicRoot) {
                 module: rule.module,
                 publicRoot
             }).map(page => {
-                return page.replace(rootDir, '');
+                return page.replace(rootDir + '/', '');
             })
         });
     });
@@ -124,12 +124,16 @@ function setPreLoadRule(pages, rules, publicRoot) {
                     view: preload
                 });
                 let preRule = Array.isArray(rule.preload[preload]) ? rule.preload[preload] : [rule.preload[preload]];
-                if (!preLoadRule[key]) {
-                    preLoadRule[key] = {
-                        packages: preRule
-                    };
+                if (key) {
+                    if (!preLoadRule[key]) {
+                        preLoadRule[key] = {
+                            packages: preRule
+                        };
+                    } else {
+                        preLoadRule[key].packages = preLoadRule[key].packages.concat(preRule);
+                    }
                 } else {
-                    preLoadRule[key].packages = preLoadRule[key].packages.concat(preRule);
+                    logger.log('subPackage', logger.colors.red(`preLoadRule error:: module: ${rule.module}, view: ${preload}`));
                 }
             });
         }
